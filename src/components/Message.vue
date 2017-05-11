@@ -1,8 +1,8 @@
 <template>
-  <div class="mdl-grid">
+  <div class="mdl-grid" style="background-color: gainsboro;">
     <div class="mdl-cell mdl-cell--12-col">
       <h4>{{message.title}}</h4>
-      <p v-if="message.desc !== ''">{{message.desc}}</p>
+      <p v-if="message.desc">{{message.desc}}</p>
     </div>
   </div>
 </template>

@@ -4,36 +4,34 @@ import _ from 'underscore'
 
 // initial state
 const state = {
-  connected: false,
-  connecting: false,
-  emailVerified: false,
-  name: '',
-  username: '',
-  email: '',
-  descricao: ''
+  connected: null,
+  loaded: null,
+  emailVerified: null,
+  nome: null,
+  email: null,
+  ref: null
 }
 
 // mutations
 const mutations = {
-  [types.CONNECT] (state, { item }) {
-    state.connected = true
-    for (var key in item) {
-      if (item.hasOwnProperty(key)) {
-        state[key] = item[key]
+  [types.USER_UPDATE] (state, obj) {
+    for (var key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        if (key === '.key') {
+          state.ref = obj[key]
+        } else {
+          state[key] = obj[key]
+        }
       }
     }
   },
 
-  [types.CONNECTING] (state) {
-    state.connecting = !state.connecting
-  },
-
   [types.DISCONECT] (state) {
-    state.connected = false
-    state.connecting = false
-    state.name = ''
-    state.username = ''
-    state.email = ''
+    for (var key in state) {
+      if (state.hasOwnProperty(key)) {
+        state[key] = null
+      }
+    }
   }
 }
 

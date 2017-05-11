@@ -12,7 +12,7 @@
               <label class="mdl-textfield__label" for="email">Email</label>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input v-model="logar.senha" class="mdl-textfield__input" type="password" id="senha">
+              <input v-model="logar.senha" @keyup.enter="signin" class="mdl-textfield__input" type="password" id="senha">
               <label class="mdl-textfield__label" for="senha">Senha</label>
             </div>
           </div>
@@ -38,7 +38,7 @@
               <label class="mdl-textfield__label" for="email">Email</label>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input v-model="cadastro.senha" class="mdl-textfield__input" type="password" id="senha">
+              <input v-model="cadastro.senha" @keyup.enter="cadastrar" class="mdl-textfield__input" type="password" id="senha">
               <label class="mdl-textfield__label" for="senha">Senha</label>
             </div>
           </div>
@@ -62,7 +62,11 @@
 
 <script>
 
+import { mapActions } from 'vuex'
+
 import auth from '../mixins/auth.js'
+
+import _ from 'underscore'
 
 export default {
   name: 'login',
@@ -85,6 +89,11 @@ export default {
       }
     }
   },
+
+  methods: mapActions([
+    'userUpdate',
+    'flashMessage'
+  ]),
 
   updated () {
     this.$nextTick(() => {

@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import * as actions from './actions'
 import * as getters from './getters'
 import user from './modules/user'
+import message from './modules/message'
 import createLogger from './plugins/logger'
 
 Vue.use(Vuex)
@@ -13,7 +14,8 @@ export default new Vuex.Store({
   actions,
   getters,
   modules: {
-    user
+    user,
+    message
   },
   strict: debug,
   plugins: debug ? [createLogger()] : []

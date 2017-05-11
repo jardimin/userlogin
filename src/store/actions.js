@@ -1,17 +1,19 @@
 import * as types from './mutation-types'
 import _ from 'underscore'
 
-export const emailConfirm = ({ commit, state }, item) => {
-  console.log('emailConfirm')
-  console.log('item: ', item)
+export const userUpdate = ({ commit, state }, item) => {
+  commit(types.USER_UPDATE, item)
 }
 
-export const login = ({ commit, state }, item) => {
-  console.log('login')
-  console.log('item: ', item)
-}
-
-export const logout = ({ commit, state }, item) => {
+export const logout = ({ commit, state }) => {
   console.log('logout')
-  console.log('item: ', item)
+  commit(types.DISCONECT)
+}
+
+export const flashMessage = ({ commit, state }, message) => {
+  console.log('logout')
+  commit(types.PUSH_MESSAGE, message)
+  setTimeout(() => {
+    commit(types.REMOVE_MESSAGE)
+  }, 15000)
 }

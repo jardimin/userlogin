@@ -1,5 +1,3 @@
-export const CONNECT = 'CONNECT'
-export const CONNECTING = 'CONNECTING'
-export const DISCONNECT = 'DISCONNECT'
-export const REGISTER = 'REGISTER'
-export const CHANGE_PASS = 'CHANGE_PASS'
+export const USER_UPDATE = 'USER_UPDATE'
+export const PUSH_MESSAGE = 'PUSH_MESSAGE'
+export const REMOVE_MESSAGE = 'REMOVE_MESSAGE'

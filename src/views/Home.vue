@@ -19,10 +19,6 @@ export default {
   ]),
 
   methods: mapActions([
-    'userRegister',
-    'registerConfirm',
-    'forgotPassword',
-    'login',
     'logout'
   ]),
 
@@ -35,8 +31,5 @@ export default {
 </script>
 
 <style>
-.mdl-badge[data-badge]:after {
-  top: 14px;
-  right: 5px;
-}
+
 </style>
