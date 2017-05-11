@@ -33,7 +33,7 @@ export default {
       this.$root.auth.createUserWithEmailAndPassword(this.cadastro.email, this.cadastro.senha)
         .then((user) => {
           this.flashMessage(messages.cadastro)
-          this.$firebaseRefs.users.push({ nome: this.cadastro.nome, email: this.cadastro.email, confirm_email: false })
+          this.$firebaseRefs.users.push({ nome: this.cadastro.nome, email: this.cadastro.email, confirm_email: false, logado: true })
           this.cadastro.nome = ''
           this.cadastro.senha = ''
           this.cadastro.email = ''
