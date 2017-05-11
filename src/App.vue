@@ -87,7 +87,7 @@ export default {
             this.userUpdate({ connected: true, emailVerified: null })
             user.sendEmailVerification()
             console.log(this.user)
-            this.$firebaseRefs.users.child(this.user.ref).set({ confirm_email: true })
+            this.$firebaseRefs.users.child(this.user.ref).child('confirm_email').set(true)
           }
         }
       })
