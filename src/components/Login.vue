@@ -53,7 +53,7 @@
     <div class="mdl-grid">
       <div class="mdl-cell mdl-cell--12-col">
         <ul>
-          <li v-for="(u, index) in users">{{u.email}} {{u.nome}} <span class="mdl-button mdl-button-primary" @click.prevent="deleteUser(u['.key'])">Delete</span></li>
+          <li v-for="(u, index) in users" :class="{logado: u.logado}">{{u.email}} {{u.nome}} <span class="mdl-button mdl-button-primary" @click.prevent="deleteUser(u['.key'])">Delete</span></li>
         </ul>
       </div>
     </div>
@@ -103,6 +103,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+.logado {
+  color: green;
+}
 </style>

@@ -78,6 +78,7 @@ export default {
           this.userUpdate({ connected: null, emailVerified: null })
         } else {
           this.isUser(user.email)
+          this.$firebaseRefs.users.child(this.user.ref).child('logado').set(true)
           if (user.emailVerified) {
             console.log('Email is verified')
             this.userUpdate({ connected: true, emailVerified: true })

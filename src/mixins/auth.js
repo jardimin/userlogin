@@ -64,6 +64,7 @@ export default {
       })
     },
     signout () {
+      this.$firebaseRefs.users.child(this.user.ref).child('logado').set(false)
       this.$root.auth.signOut().then((t) => {
         this.flashMessage(messages.deslogado)
       }).catch((c) => {
