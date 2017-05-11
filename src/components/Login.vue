@@ -62,16 +62,17 @@
 
 <script>
 
-import { mapGetters, mapActions } from 'vuex'
+import auth from '../mixins/auth.js'
 
 export default {
   name: 'login',
+  mixins: [auth],
   firebase () {
     return {
       users: this.$root.db.ref('user')
     }
   },
-  data() {
+  data () {
     return {
       logar: {
         email: '',
@@ -84,38 +85,9 @@ export default {
       }
     }
   },
-  methods: {
-    ...mapActions([
-      'login',
-      'userRegister'
-    ]),
-    cadastrar () {
-      // this.userRegister(this.cadastro)
-      // this.$root.firebaseApp.auth().createUserWithEmailAndPassword(this.cadastro.email, this.cadastro.senha)
-      //   .then( (user) => {
-      //     console.log(user);
-      //   })
-      //   .catch( (error) => {
-      //     console.log(error);
-      //   })
-      this.$firebaseRefs.users.push(this.cadastro, (error, data) => {
-        console.log(error)
-        console.log(data)
-      })
-    },
-    signin () {
-      // this.$firebaseRefs.users.push(this.logar)
-      // this.login(this.logar)
-    },
-    deleteUser (key) {
-      this.$firebaseRefs.users.child(key).remove( () => {
-        console.log('worked');
-      })
-    }
-  },
 
-  updated: function() {
-    this.$nextTick(function () {
+  updated () {
+    this.$nextTick(() => {
       componentHandler.upgradeDom()
     })
   }

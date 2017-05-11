@@ -6,9 +6,11 @@ import _ from 'underscore'
 const state = {
   connected: false,
   connecting: false,
+  emailVerified: false,
   name: '',
   username: '',
-  email: ''
+  email: '',
+  descricao: ''
 }
 
 // mutations

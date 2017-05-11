@@ -22,13 +22,15 @@ var firebaseApp = Firebase.initializeApp({
   messagingSenderId: '181501843283'
 })
 var db = firebaseApp.database()
+var auth = firebaseApp.auth()
 
 new Vue({
   router,
   store,
   data: {
     db: db,
-    firebaseApp: firebaseApp
+    firebaseApp: firebaseApp,
+    auth: auth
   },
   render: (h) => h(App)
 }).$mount('#app')
