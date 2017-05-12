@@ -24,7 +24,9 @@
             <a v-else class="mdl-navigation__link" href="">LogIn</a>
           </nav>
         </div>
+        <!--Componente que mostra mensagens de erro ou sucesso-->
         <message v-if="message.title"></message>
+        <!--Componente que mostra mensagens de erro ou sucesso-->
         <main class="mdl-layout__content">
           <router-view class="page-content"></router-view>
         </main>
@@ -71,23 +73,36 @@ export default {
 
   mounted () {
     this.$nextTick(() => {
+      // Acompanha a mudança de status do currentUser
       this.$root.auth.onAuthStateChanged((user) => {
+        // Sinal para o carregamento da página
         this.userUpdate({ loaded: true })
+        // Se não houver currentUser
         if (user === null) {
           console.log('Deslogado')
           this.userUpdate({ connected: null, emailVerified: null })
+        // Se houver currentUser
         } else {
+          // Chama função que se encontra no mixin auth.js
           this.isUser(user.email)
+          // Determina a propriedade logado do usuário em sua referencia na database para true
           this.$firebaseRefs.users.child(this.user.ref).child('logado').set(true)
+          // Se o usuário já verificou o email
           if (user.emailVerified) {
             console.log('Email is verified')
+            // Mutaciona o modelo de user no Vuex
             this.userUpdate({ connected: true, emailVerified: true })
+          // Se o usuário ainda não verificou seu email mas o email de verificação já foi enviado
           } else if (user.confirm_email) {
+            // Mutaciona o modelo de user no Vuex
             this.userUpdate({ connected: true, emailVerified: null })
+          // Se o usuário ainda não verificou seu email e o email de verificação ainda não foi enviado
           } else {
+            // Mutaciona o modelo de user no Vuex
             this.userUpdate({ connected: true, emailVerified: null })
+            // Envia o email de verificação
             user.sendEmailVerification()
-            console.log(this.user)
+            // // Determina a propriedade confirm_email do usuário em sua referencia na database para true
             this.$firebaseRefs.users.child(this.user.ref).child('confirm_email').set(true)
           }
         }
@@ -97,6 +112,7 @@ export default {
 
   updated () {
     this.$nextTick(function () {
+      // Ação da biblioteca do Material Design Lite para executar as funções de update do DOM
       componentHandler.upgradeDom()
     })
   },

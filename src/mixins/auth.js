@@ -72,6 +72,7 @@ export default {
         console.log('Foi catch')
       })
     },
+    // Acha um usuário na database usando o email e mutaciona o modelo do user no Vuex
     isUser (email) {
       let find = _.findWhere(this.users, { email: email })
       console.log(this.users);

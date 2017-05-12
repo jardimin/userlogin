@@ -5,14 +5,17 @@ import 'babel-polyfill'
 import Vue from 'vue'
 import VueFire from 'vuefire'
 import Firebase from 'firebase'
+// Importa o router
 import router from './routes.js'
 
 Vue.use(VueFire)
 
+// Importa o Vuex através da store
 import store from './store'
 
 import App from './App.vue'
 
+// Inicia firebase
 var firebaseApp = Firebase.initializeApp({
   apiKey: 'AIzaSyA0mBa32a-bObvU_FpIa4tuRjkRNfh7i48',
   authDomain: 'teste-73511.firebaseapp.com',
@@ -21,9 +24,11 @@ var firebaseApp = Firebase.initializeApp({
   storageBucket: 'teste-73511.appspot.com',
   messagingSenderId: '181501843283'
 })
+// Cria duas variaveis para database e auth do firebase
 var db = firebaseApp.database()
 var auth = firebaseApp.auth()
 
+// Inicia instacia do Vue com o Router(router) e Vuex(store)
 new Vue({
   router,
   store,
