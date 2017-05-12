@@ -95,10 +95,15 @@ export default {
     isUser (email) {
       // Cria uma variavel e a relaciona ao usuario da database que possui o email fornecido
       let find = _.findWhere(this.users, { email: email })
+      // Se o usuário for achado
       if (find !== undefined) {
+        // Mutaciona o modelo de user no Vuex
         this.userUpdate(find)
+      // Se o usuário não for achado
       } else {
+        // Cria uma referencia para o usuário na database
         this.$firebaseRefs.users.push({ nome: 'Anonimo', email: email })
+        // Mutaciona o modelo de user no Vuex
         this.userUpdate({ nome: 'Anonimo', email: email })
       }
     }

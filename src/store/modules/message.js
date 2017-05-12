@@ -1,3 +1,5 @@
+// TODO: Acrescentar uma propriedade "type" que determine se é uma menssagem de erro ou sucesso
+
 import * as types from '../mutation-types'
 
 import _ from 'underscore'
